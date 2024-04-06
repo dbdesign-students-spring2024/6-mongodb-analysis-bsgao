@@ -841,3 +841,43 @@ The query aggregates data from the listings collection, grouping entries by host
 ```
 
 ## 7. find the average review_scores_rating per neighborhood, and only show those that are 4 or above, sorted in descending order of rating
+
+### Code
+
+```
+db.listings.aggregate([
+  { $match: { "review_scores_rating": { $gte: 4 } } },
+  { $group: {
+    _id: "$neighbourhood_cleansed",
+    averageRating: { $avg: "$review_scores_rating" }
+  }},
+  { $sort: { averageRating: -1 } }
+])
+```
+
+Calculating the average review scores rating per neighborhood, considering only those ratings 4 or above, and sorted in descending order.
+
+### Result
+
+```
+{ "_id" : "IJburg - Zeeburgereiland", "averageRating" : 4.878344549125169 }
+{ "_id" : "Watergraafsmeer", "averageRating" : 4.869106302916275 }
+{ "_id" : "De Baarsjes - Oud-West", "averageRating" : 4.867757455923545 }
+{ "_id" : "Oud-Oost", "averageRating" : 4.8664462809917355 }
+{ "_id" : "De Pijp - Rivierenbuurt", "averageRating" : 4.8648870536798645 }
+{ "_id" : "Slotervaart", "averageRating" : 4.863715469613259 }
+{ "_id" : "Noord-Oost", "averageRating" : 4.863032490974729 }
+{ "_id" : "Zuid", "averageRating" : 4.858803347280335 }
+{ "_id" : "Bos en Lommer", "averageRating" : 4.8559075907590765 }
+{ "_id" : "Westerpark", "averageRating" : 4.85061975209916 }
+{ "_id" : "Oostelijk Havengebied - Indische Buurt", "averageRating" : 4.848792093704246 }
+{ "_id" : "Noord-West", "averageRating" : 4.847317327766179 }
+{ "_id" : "Buitenveldert - Zuidas", "averageRating" : 4.840906593406594 }
+{ "_id" : "De Aker - Nieuw Sloten", "averageRating" : 4.839267399267399 }
+{ "_id" : "Oud-Noord", "averageRating" : 4.836345800122624 }
+{ "_id" : "Centrum-Oost", "averageRating" : 4.835154980439362 }
+{ "_id" : "Bijlmer-Oost", "averageRating" : 4.819517241379311 }
+{ "_id" : "Centrum-West", "averageRating" : 4.818657162566107 }
+{ "_id" : "Geuzenveld - Slotermeer", "averageRating" : 4.788263736263736 }
+{ "_id" : "Osdorp", "averageRating" : 4.782100000000001 }
+```
