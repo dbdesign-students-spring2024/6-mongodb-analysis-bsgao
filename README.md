@@ -287,6 +287,8 @@ This query retrieves ten documents from the listings collection and formats the 
 
 ## 3.Choose two hosts (by reffering to their host_id values) who are superhosts (available in the host_is_superhost field), and show all of the listings offered by both of the two hosts
 
+Chosen host_id: 11808004, 32116304
+
 ### Code
 
 ```
@@ -321,7 +323,7 @@ This query filters listings where the host ID is either 11808004 or 32116304, an
 { "_id" : ObjectId("6611ab1dc34b7fbd6a5a85f4"), "name" : "Rental unit in Amsterdam · ★4.82 · 1 bedroom · 1 bed · 1 bath", "host_name" : "Henry", "host_is_superhost" : "t", "neighbourhood" : "Amsterdam, Noord-Holland, Netherlands", "price" : "$105.00" }
 ```
 
-## 4.
+## 4. Find all the unique host_name values
 
 ### Code
 
@@ -766,3 +768,76 @@ This code finds all the unique host names in the collection of documents
 	"Béla",
 	"Bénine",
 ```
+
+## 5.Find all of the places that have more than 2 beds in a neighborhood of your choice (referred to as either the neighborhood or neighbourhood_group_cleansed fields in the data file), ordered by review_scores_rating descending.
+
+### Code
+
+```
+db.listings.find({
+  $and: [
+    { "neighbourhood_cleansed": "Oud-Oost" },
+    { "beds": { $gt: 2 } },
+    { "review_scores_rating": { $ne: null } }
+  ]
+}, {
+  "name": 1,
+  "beds": 1,
+  "review_scores_rating": 1,
+  "price": 1
+}).sort({ "review_scores_rating": -1 })
+```
+
+The query retrieves listings from the "Oud-Oost" neighborhood with more than two beds and a non-null review score, returning only the name, number of beds, review score, and price of each listing. These results are sorted by review score in descending order to prioritize higher-rated listings.
+
+### Result(Showing first few)
+
+```
+{ "_id" : ObjectId("660ebf08b6515eb2057e565d"), "name" : "Condo in Amsterdam · 3 bedrooms · 3 beds · 1 bath", "beds" : 3, "price" : "$320.00", "review_scores_rating" : "" }
+{ "_id" : ObjectId("660ebf09b6515eb2057e5d82"), "name" : "Home in Amsterdam · 3 bedrooms · 3 beds · 3 baths", "beds" : 3, "price" : "$300.00", "review_scores_rating" : "" }
+{ "_id" : ObjectId("660ebf09b6515eb2057e6540"), "name" : "Condo in Amsterdam · ★New · 2 bedrooms · 4 beds · 1.5 baths", "beds" : 4, "price" : "$170.00", "review_scores_rating" : "" }
+{ "_id" : ObjectId("660ebf09b6515eb2057e65ad"), "name" : "Home in Amsterdam · 3 bedrooms · 3 beds · 1.5 baths", "beds" : 3, "price" : "$295.00", "review_scores_rating" : "" }
+{ "_id" : ObjectId("660ec6aeb6515eb2057ea0aa"), "name" : "Condo in Amsterdam · 3 bedrooms · 3 beds · 1 bath", "beds" : 3, "price" : "$320.00", "review_scores_rating" : "" }
+{ "_id" : ObjectId("660ec6afb6515eb2057ea7cc"), "name" : "Home in Amsterdam · 3 bedrooms · 3 beds · 3 baths", "beds" : 3, "price" : "$300.00", "review_scores_rating" : "" }
+{ "_id" : ObjectId("660ec6afb6515eb2057eaf89"), "name" : "Condo in Amsterdam · ★New · 2 bedrooms · 4 beds · 1.5 baths", "beds" : 4, "price" : "$170.00", "review_scores_rating" : "" }
+```
+
+## 6. Show the number of listings per host
+
+### Code
+
+```
+db.listings.aggregate([
+  { $group: { _id: "$host_id", host_total_listings_count: { $sum: 1 } } },
+  { $project: { host_id: "$_id", host_total_listings_count: 1, _id: 0 } }
+])
+```
+
+The query aggregates data from the listings collection, grouping entries by host_id and counting the total number of listings per host
+
+### Result (selected Samples)
+
+```
+{ "host_total_listings_count" : 4, "host_id" : 16683382 }
+{ "host_total_listings_count" : 4, "host_id" : 33755999 }
+{ "host_total_listings_count" : 4, "host_id" : 4381603 }
+{ "host_total_listings_count" : 5, "host_id" : 12167638 }
+{ "host_total_listings_count" : 5, "host_id" : 3031239 }
+{ "host_total_listings_count" : 5, "host_id" : 8580012 }
+{ "host_total_listings_count" : 5, "host_id" : 53203726 }
+{ "host_total_listings_count" : 5, "host_id" : 297593311 }
+{ "host_total_listings_count" : 5, "host_id" : 308752067 }
+{ "host_total_listings_count" : 5, "host_id" : 5219968 }
+{ "host_total_listings_count" : 5, "host_id" : 9846631 }
+{ "host_total_listings_count" : 10, "host_id" : 313772063 }
+{ "host_total_listings_count" : 25, "host_id" : 51485781 }
+{ "host_total_listings_count" : 4, "host_id" : 11335521 }
+{ "host_total_listings_count" : 5, "host_id" : 498869432 }
+{ "host_total_listings_count" : 5, "host_id" : 82297492 }
+{ "host_total_listings_count" : 5, "host_id" : 27278204 }
+{ "host_total_listings_count" : 5, "host_id" : 773375 }
+{ "host_total_listings_count" : 4, "host_id" : 12781730 }
+{ "host_total_listings_count" : 4, "host_id" : 56325407 }
+```
+
+## 7. find the average review_scores_rating per neighborhood, and only show those that are 4 or above, sorted in descending order of rating
