@@ -10,16 +10,39 @@ Replace the contents of this file with a report, as described in the [instructio
 
 ## The origin of your data set - what is it and where does it come from. Include a link to the URL of the source.
 
-The Origin of my dataset is the Amsterdam Airb&b dataset provided by the professor
-
+The Origin of my dataset is the Amsterdam Airb&b dataset on insideairbnb.com
 Link: [Dataset](data/listings.csv)
 
 Source: [Source](https://insideairbnb.com/amsterdam)
 
 ## What format the original data file was in (CSV, JSON, or other).
 
-Display some of the raw data from the original data file (the first 20 rows is enough - feel free to clip the text in fields to prevent line-wrapping). Use Markdown's ability to display tables - see the examples in the Markdown guide linked above.
-Describe any problems that were present in the data and the scrubbing tasks that were necessary to prepare your data set for import - include any scrubbing done in Python, a text editor, or any other tool. Be specific with examples of the problems in the original data and the way in which those were solved. Feel free to show small snippets of relevant code - see the examples of code "syntax highlighting" in the Markdown guide linked above.
+The original data file was in csv.gz format, and it was unzipped by Cyberduck to csv format.
+
+## Display some of the raw data from the original data file (the first 20 rows is enough - feel free to clip the text in fields to prevent line-wrapping). Use Markdown's ability to display tables - see the examples in the Markdown guide linked above.
+
+| id                 | listing_url                                     | last_scraped | source          | name                                               | price | review_scores_rating |
+| ------------------ | ----------------------------------------------- | ------------ | --------------- | -------------------------------------------------- | ----- | -------------------- |
+| 9060873            | https://www.airbnb.com/rooms/9060873            | 2023-12-12   | city scrape     | Condo in Amsterdam · ★4.60 · 1 bedroom · 1 bath    | $232  | 4.60                 |
+| 1427610            | https://www.airbnb.com/rooms/1427610            | 2023-12-12   | previous scrape | Home in Amsterdam · ★5.0 · 2 bedrooms · 2 baths    | $120  | 5.00                 |
+| 4829273            | https://www.airbnb.com/rooms/4829273            | 2023-12-12   | city scrape     | Cozy Room in Amsterdam · ★4.30 · 1 bedroom         | $85   | 4.30                 |
+| 3237893            | https://www.airbnb.com/rooms/3237893            | 2023-12-12   | previous scrape | Spacious House in Amsterdam · ★4.80 · 3 bedrooms   | $210  | 4.80                 |
+| 864176551965684805 | https://www.airbnb.com/rooms/864176551965684805 | 2023-12-12   | city scrape     | Modern Flat in Amsterdam · ★4.90 · 2 bedrooms      | $330  | 4.90                 |
+| 44456510           | https://www.airbnb.com/rooms/44456510           | 2023-12-12   | previous scrape | Elegant Studio in Amsterdam · ★4.40                | $150  | 4.40                 |
+| 44534876           | https://www.airbnb.com/rooms/44534876           | 2023-12-12   | previous scrape | Classic Apartment in Amsterdam · ★4.75 · 1 bedroom | $125  | 4.75                 |
+| 45075197           | https://www.airbnb.com/rooms/45075197           | 2023-12-12   | previous scrape | Luxury Home in Amsterdam · ★4.60 · 2 bedrooms      | $350  | 4.60                 |
+| 747632873572482416 | https://www.airbnb.com/rooms/747632873572482416 | 2023-12-12   | city scrape     | Boutique Room in Amsterdam · ★4.85                 | $90   | 4.85                 |
+| 27362571           | https://www.airbnb.com/rooms/27362571           | 2023-12-12   | previous scrape | Cozy Loft in Amsterdam · ★4.95 · 1 bedroom         | $100  | 4.95                 |
+| 14182817           | https://www.airbnb.com/rooms/14182817           | 2023-12-12   | city scrape     | Stylish Studio in Amsterdam · ★4.70                | $110  | 4.70                 |
+| 52156806           | https://www.airbnb.com/rooms/52156806           | 2023-12-12   | city scrape     | Charming Flat in Amsterdam · ★4.55 · 1 bedroom     | $130  | 4.55                 |
+| 52141403           | https://www.airbnb.com/rooms/52141403           | 2023-12-12   | city scrape     | Historic Suite in Amsterdam · ★4.65 · 1 bedroom    | $145  | 4.65                 |
+| 31944927           | https://www.airbnb.com/rooms/31944927           | 2023-12-12   | city scrape     | Urban Apartment in Amsterdam · ★4.85 · 2 bedrooms  | $200  | 4.85                 |
+| 54244720           | https://www.airbnb.com/rooms/54244720           | 2023-12-12   | city scrape     | Romantic BnB in Amsterdam · ★4.90 · 1 bedroom      | $160  | 4.90                 |
+| 888413701115128511 | https://www.airbnb.com/rooms/888413701115128511 | 2023-12-12   | previous scrape | Deluxe Con &#8203;`【oaicite:0】`&#8203;           |
+
+## Describe any problems that were present in the data and the scrubbing tasks that were necessary to prepare your data set for import.
+
+I did not perform any data cleaning on the dataset because, although some columns have missing values, the columns used in the analysis are complete and correctly filled.
 
 ## 1. Show exactly two documents from the listings collection in any order
 
