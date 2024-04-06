@@ -19,13 +19,95 @@ Describe any problems that were present in the data and the scrubbing tasks that
 
 returns the first two documents from the listings collection as they are stored in the database
 
+## Code
+
 ```
 
 db.listings.find().limit(2)
 
 ```
 
-### Result:
+## Query Results
 
-{ "\_id" : ObjectId("660ebf08b6515eb2057e4dd7"), "id" : 9060873, "listing_url" : "https://www.airbnb.com/rooms/9060873", "scrape_id" : NumberLong("20231212015436"), "last_scraped" : "2023-12-12", "source" : "city scrape", "name" : "Condo in Amsterdam · ★4.60 · 1 bedroom · 1 bed · 1 bath", "description" : "", "neighborhood_overview" : "", "picture_url" : "https://a0.muscache.com/pictures/miso/Hosting-9060873/original/35fa0e6c-397b-4145-9027-53e0d7c439bf.jpeg", "host_id" : 47265643, "host_url" : "https://www.airbnb.com/users/show/47265643", "host_name" : "Magali", "host_since" : "2015-10-23", "host_location" : "Amsterdam, Netherlands", "host_about" : "", "host_response_time" : "N/A", "host_response_rate" : "N/A", "host_acceptance_rate" : "86%", "host_is_superhost" : "f", "host_thumbnail_url" : "https://a0.muscache.com/im/pictures/user/1596053e-34e6-429a-9f6b-cfc8b1b8bac1.jpg?aki_policy=profile_small", "host_picture_url" : "https://a0.muscache.com/im/pictures/user/1596053e-34e6-429a-9f6b-cfc8b1b8bac1.jpg?aki_policy=profile_x_medium", "host_neighbourhood" : "", "host_listings_count" : 1, "host_total_listings_count" : 1, "host_verifications" : "['email', 'phone']", "host_has_profile_pic" : "t", "host_identity_verified" : "t", "neighbourhood" : "", "neighbourhood_cleansed" : "Oud-Oost", "neighbourhood_group_cleansed" : "", "latitude" : 52.3565573, "longitude" : 4.9175314, "property_type" : "Entire condo", "room_type" : "Entire home/apt", "accommodates" : 2, "bathrooms" : "", "bathrooms_text" : "1 bath", "bedrooms" : "", "beds" : 1, "amenities" : "[]", "price" : "$232.00", "minimum_nights" : 2, "maximum_nights" : 365, "minimum_minimum_nights" : 2, "maximum_minimum_nights" : 3, "minimum_maximum_nights" : 365, "maximum_maximum_nights" : 365, "minimum_nights_avg_ntm" : 2.4, "maximum_nights_avg_ntm" : 365, "calendar_updated" : "", "has_availability" : "t", "availability_30" : 4, "availability_60" : 4, "availability_90" : 5, "availability_365" : 23, "calendar_last_scraped" : "2023-12-12", "number_of_reviews" : 5, "number_of_reviews_ltm" : 3, "number_of_reviews_l30d" : 0, "first_review" : "2022-11-13", "last_review" : "2023-09-15", "review_scores_rating" : 4.6, "review_scores_accuracy" : 4.6, "review_scores_cleanliness" : 4.4, "review_scores_checkin" : 4.4, "review_scores_communication" : 4.6, "review_scores_location" : 4.6, "review_scores_value" : 4.4, "license" : "0363 AD77 7A50 99E1 5492", "instant_bookable" : "f", "calculated_host_listings_count" : 1, "calculated_host_listings_count_entire_homes" : 1, "calculated_host_listings_count_private_rooms" : 0, "calculated_host_listings_count_shared_rooms" : 0, "reviews_per_month" : 0.38 }
-{ "\_id" : ObjectId("660ebf08b6515eb2057e4dd8"), "id" : 1427610, "listing_url" : "https://www.airbnb.com/rooms/1427610", "scrape_id" : NumberLong("20231212015436"), "last_scraped" : "2023-12-12", "source" : "previous scrape", "name" : "Home in Amsterdam · ★5.0 · 2 bedrooms · 2 beds · 2 baths", "description" : "", "neighborhood_overview" : "", "picture_url" : "https://a0.muscache.com/pictures/8d855b40-ba50-4c06-bb97-a0b84dd6e694.jpg", "host_id" : 7677579, "host_url" : "https://www.airbnb.com/users/show/7677579", "host_name" : "Aukje", "host_since" : "2013-07-23", "host_location" : "Amsterdam, Netherlands", "host_about" : "Hi! I am Aukje. I live with my husband and two kids in Amsterdam.", "host_response_time" : "N/A", "host_response_rate" : "N/A", "host_acceptance_rate" : "50%", "host_is_superhost" : "f", "host_thumbnail_url" : "https://a0.muscache.com/im/pictures/user/c9ab4610-5b55-45bb-9b2c-44d31f056523.jpg?aki_policy=profile_small", "host_picture_url" : "https://a0.muscache.com/im/pictures/user/c9ab4610-5b55-45bb-9b2c-44d31f056523.jpg?aki_policy=profile_x_medium", "host_neighbourhood" : "", "host_listings_count" : 1, "host_total_listings_count" : 1, "host_verifications" : "['email', 'phone']", "host_has_profile_pic" : "t", "host_identity_verified" : "t", "neighbourhood" : "", "neighbourhood_cleansed" : "Geuzenveld - Slotermeer", "neighbourhood_group_cleansed" : "", "latitude" : 52.38277, "longitude" : 4.80351, "property_type" : "Entire home", "room_type" : "Entire home/apt", "accommodates" : 4, "bathrooms" : "", "bathrooms_text" : "2 baths", "bedrooms" : "", "beds" : 2, "amenities" : "[]", "price" : "$120.00", "minimum_nights" : 5, "maximum_nights" : 1125, "minimum_minimum_nights" : 5, "maximum_minimum_nights" : 5, "minimum_maximum_nights" : 1125, "maximum_maximum_nights" : 1125, "minimum_nights_avg_ntm" : 5, "maximum_nights_avg_ntm" : 1125, "calendar_updated" : "", "has_availability" : "f", "availability_30" : 0, "availability_60" : 0, "availability_90" : 0, "availability_365" : 0, "calendar_last_scraped" : "2023-12-12", "number_of_reviews" : 6, "number_of_reviews_ltm" : 1, "number_of_reviews_l30d" : 0, "first_review" : "2020-07-30", "last_review" : "2023-08-06", "review_scores_rating" : 5, "review_scores_accuracy" : 4.67, "review_scores_cleanliness" : 4.83, "review_scores_checkin" : 4.83, "review_scores_communication" : 5, "review_scores_location" : 4.67, "review_scores_value" : 4.83, "license" : "0363 316D 14AF 5201 F18F", "instant_bookable" : "f", "calculated_host_listings_count" : 1, "calculated_host_listings_count_entire_homes" : 1, "calculated_host_listings_count_private_rooms" : 0, "calculated_host_listings_count_shared_rooms" : 0, "reviews_per_month" : 0.15 }
+### Document 1
+
+```json
+{
+  "_id": "ObjectId('660ebf08b6515eb2057e4dd7')",
+  "id": 9060873,
+  "listing_url": "https://www.airbnb.com/rooms/9060873",
+  "scrape_id": "NumberLong('20231212015436')",
+  "last_scraped": "2023-12-12",
+  "source": "city scrape",
+  "name": "Condo in Amsterdam · ★4.60 · 1 bedroom · 1 bed · 1 bath",
+  "description": "",
+  "neighborhood_overview": "",
+  "picture_url": "https://a0.muscache.com/pictures/miso/Hosting-9060873/original/35fa0e6c-397b-4145-9027-53e0d7c439bf.jpeg",
+  "host_id": 47265643,
+  "host_url": "https://www.airbnb.com/users/show/47265643",
+  "host_name": "Magali",
+  "host_since": "2015-10-23",
+  "host_location": "Amsterdam, Netherlands",
+  "host_about": "",
+  "host_response_time": "N/A",
+  "host_response_rate": "N/A",
+  "host_acceptance_rate": "86%",
+  "host_is_superhost": "f",
+  "host_thumbnail_url": "https://a0.muscache.com/im/pictures/user/1596053e-34e6-429a-9f6b-cfc8b1b8bac1.jpg?aki_policy=profile_small",
+  "host_picture_url": "https://a0.muscache.com/im/pictures/user/1596053e-34e6-429a-9f6b-cfc8b1b8bac1.jpg?aki_policy=profile_x_medium",
+  "host_neighbourhood": "",
+  "host_listings_count": 1,
+  "host_total_listings_count": 1,
+  "host_verifications": "['email', 'phone']",
+  "host_has_profile_pic": "t",
+  "host_identity_verified": "t",
+  "neighbourhood": "",
+  "neighbourhood_cleansed": "Oud-Oost",
+  "neighbourhood_group_cleansed": "",
+  "latitude": 52.3565573,
+  "longitude": 4.9175314,
+  "property_type": "Entire condo",
+  "room_type": "Entire home/apt",
+  "accommodates": 2,
+  "bathrooms": "",
+  "bathrooms_text": "1 bath",
+  "bedrooms": "",
+  "beds": 1,
+  "amenities": "[]",
+  "price": "$232.00",
+  "minimum_nights": 2,
+  "maximum_nights": 365,
+  "minimum_minimum_nights": 2,
+  "maximum_minimum_nights": 3,
+  "minimum_maximum_nights": 365,
+  "maximum_maximum_nights": 365,
+  "minimum_nights_avg_ntm": 2.4,
+  "maximum_nights_avg_ntm": 365,
+  "calendar_updated": "",
+  "has_availability": "t",
+  "availability_30": 4,
+  "availability_60": 4,
+  "availability_90": 5,
+  "availability_365": 23,
+  "calendar_last_scraped": "2023-12-12",
+  "number_of_reviews": 5,
+  "number_of_reviews_ltm": 3,
+  "number_of_reviews_l30d": 0,
+  "first_review": "2022-11-13",
+  "last_review": "2023-09-15",
+  "review_scores_rating": 4.6,
+  "review_scores_accuracy": 4.6,
+  "review_scores_cleanliness": 4.4,
+  "review_scores_checkin": 4.4,
+  "review_scores_communication": 4.6,
+  "review_scores_location": 4.6,
+  "review_scores_value": 4.4,
+  "license": "0363 AD77 7A50 99E1 5492",
+  "instant_bookable": "f",
+  "calculated_host_listings_count": 1,
+  "calculated_host_listings_count_entire_homes": 1,
+  "calculated_host_listings_count_private_rooms": 0,
+  "calculated_host_listings_count_shared_rooms": 0,
+  "reviews_per_month": 0.38
+}
+```
