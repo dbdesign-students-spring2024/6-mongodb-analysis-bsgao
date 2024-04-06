@@ -27,7 +27,7 @@ db.listings.find().limit(2)
 
 ```
 
-## Query Results
+## Query Results(First three documents)
 
 ```
 { "_id" : ObjectId("660ebf08b6515eb2057e4dd7"), "id" : 9060873, "listing_url" : "https://www.airbnb.com/rooms/9060873", "scrape_id" : NumberLong("20231212015436"), "last_scraped" : "2023-12-12", "source" : "city scrape", "name" : "Condo in Amsterdam · ★4.60 · 1 bedroom · 1 bed · 1 bath", "description" : "", "neighborhood_overview" : "", "picture_url" : "https://a0.muscache.com/pictures/miso/Hosting-9060873/original/35fa0e6c-397b-4145-9027-53e0d7c439bf.jpeg", "host_id" : 47265643, "host_url" : "https://www.airbnb.com/users/show/47265643", "host_name" : "Magali", "host_since" : "2015-10-23", "host_location" : "Amsterdam, Netherlands", "host_about" : "", "host_response_time" : "N/A", "host_response_rate" : "N/A", "host_acceptance_rate" : "86%", "host_is_superhost" : "f", "host_thumbnail_url" : "https://a0.muscache.com/im/pictures/user/1596053e-34e6-429a-9f6b-cfc8b1b8bac1.jpg?aki_policy=profile_small", "host_picture_url" : "https://a0.muscache.com/im/pictures/user/1596053e-34e6-429a-9f6b-cfc8b1b8bac1.jpg?aki_policy=profile_x_medium", "host_neighbourhood" : "", "host_listings_count" : 1, "host_total_listings_count" : 1, "host_verifications" : "['email', 'phone']", "host_has_profile_pic" : "t", "host_identity_verified" : "t", "neighbourhood" : "", "neighbourhood_cleansed" : "Oud-Oost", "neighbourhood_group_cleansed" : "", "latitude" : 52.3565573, "longitude" : 4.9175314, "property_type" : "Entire condo", "room_type" : "Entire home/apt", "accommodates" : 2, "bathrooms" : "", "bathrooms_text" : "1 bath", "bedrooms" : "", "beds" : 1, "amenities" : "[]", "price" : "$232.00", "minimum_nights" : 2, "maximum_nights" : 365, "minimum_minimum_nights" : 2, "maximum_minimum_nights" : 3, "minimum_maximum_nights" : 365, "maximum_maximum_nights" : 365, "minimum_nights_avg_ntm" : 2.4, "maximum_nights_avg_ntm" : 365, "calendar_updated" : "", "has_availability" : "t", "availability_30" : 4, "availability_60" : 4, "availability_90" : 5, "availability_365" : 23, "calendar_last_scraped" : "2023-12-12", "number_of_reviews" : 5, "number_of_reviews_ltm" : 3, "number_of_reviews_l30d" : 0, "first_review" : "2022-11-13", "last_review" : "2023-09-15", "review_scores_rating" : 4.6, "review_scores_accuracy" : 4.6, "review_scores_cleanliness" : 4.4, "review_scores_checkin" : 4.4, "review_scores_communication" : 4.6, "review_scores_location" : 4.6, "review_scores_value" : 4.4, "license" : "0363 AD77 7A50 99E1 5492", "instant_bookable" : "f", "calculated_host_listings_count" : 1, "calculated_host_listings_count_entire_homes" : 1, "calculated_host_listings_count_private_rooms" : 0, "calculated_host_listings_count_shared_rooms" : 0, "reviews_per_month" : 0.38 }
@@ -42,6 +42,8 @@ db.listings.find().limit(2)
 db.listings.find().limit(10).pretty()
 
 ```
+
+This query retrieves ten documents from the listings collection and formats the output for easier reading.
 
 ### Result
 
@@ -281,4 +283,40 @@ db.listings.find().limit(10).pretty()
 	"reviews_per_month" : 0.51
 }
 
+```
+
+## Choose two hosts (by reffering to their host_id values) who are superhosts (available in the host_is_superhost field), and show all of the listings offered by both of the two hosts
+
+### Code
+
+```
+db.listings.find({
+  "host_id": { $in: [11808004, 32116304] },
+  "host_is_superhost": "t"
+}, {
+  "name": 1,
+  "price": 1,
+  "neighbourhood": 1,
+  "host_name": 1,
+  "host_is_superhost": 1
+})
+```
+
+This query filters listings where the host ID is either 11808004 or 32116304, and show the show the name, price, neighbourhood, host_name, and host_is_superhost for each result.
+
+### Result
+
+```json
+{ "_id" : ObjectId("660ebf08b6515eb2057e4de3"), "name" : "Rental unit in Amsterdam · ★4.94 · 1 bedroom · 1 bed · 1 bath", "host_name" : "Henry", "host_is_superhost" : "t", "neighbourhood" : "Amsterdam, Noord-Holland, Netherlands", "price" : "$250.00" }
+{ "_id" : ObjectId("660ebf08b6515eb2057e4ded"), "name" : "Condo in Amsterdam · ★5.0 · 1 bedroom · 2 beds · 1.5 baths", "host_name" : "Eva", "host_is_superhost" : "t", "neighbourhood" : "Amsterdam, Noord-Holland, Netherlands", "price" : "$260.00" }
+{ "_id" : ObjectId("660ebf09b6515eb2057e5e1d"), "name" : "Rental unit in Amsterdam · ★4.82 · 1 bedroom · 1 bed · 1 bath", "host_name" : "Henry", "host_is_superhost" : "t", "neighbourhood" : "Amsterdam, Noord-Holland, Netherlands", "price" : "$105.00" }
+{ "_id" : ObjectId("660ec6aeb6515eb2057e982d"), "name" : "Rental unit in Amsterdam · ★4.94 · 1 bedroom · 1 bed · 1 bath", "host_name" : "Henry", "host_is_superhost" : "t", "neighbourhood" : "Amsterdam, Noord-Holland, Netherlands", "price" : "$250.00" }
+{ "_id" : ObjectId("660ec6aeb6515eb2057e9837"), "name" : "Condo in Amsterdam · ★5.0 · 1 bedroom · 2 beds · 1.5 baths", "host_name" : "Eva", "host_is_superhost" : "t", "neighbourhood" : "Amsterdam, Noord-Holland, Netherlands", "price" : "$260.00" }
+{ "_id" : ObjectId("660ec6afb6515eb2057ea867"), "name" : "Rental unit in Amsterdam · ★4.82 · 1 bedroom · 1 bed · 1 bath", "host_name" : "Henry", "host_is_superhost" : "t", "neighbourhood" : "Amsterdam, Noord-Holland, Netherlands", "price" : "$105.00" }
+{ "_id" : ObjectId("660eca1db6515eb2057ebacc"), "name" : "Rental unit in Amsterdam · ★4.94 · 1 bedroom · 1 bed · 1 bath", "host_name" : "Henry", "host_is_superhost" : "t", "neighbourhood" : "Amsterdam, Noord-Holland, Netherlands", "price" : "$250.00" }
+{ "_id" : ObjectId("660eca1db6515eb2057ebad6"), "name" : "Condo in Amsterdam · ★5.0 · 1 bedroom · 2 beds · 1.5 baths", "host_name" : "Eva", "host_is_superhost" : "t", "neighbourhood" : "Amsterdam, Noord-Holland, Netherlands", "price" : "$260.00" }
+{ "_id" : ObjectId("660eca1db6515eb2057ecb06"), "name" : "Rental unit in Amsterdam · ★4.82 · 1 bedroom · 1 bed · 1 bath", "host_name" : "Henry", "host_is_superhost" : "t", "neighbourhood" : "Amsterdam, Noord-Holland, Netherlands", "price" : "$105.00" }
+{ "_id" : ObjectId("6611ab1dc34b7fbd6a5a75ba"), "name" : "Rental unit in Amsterdam · ★4.94 · 1 bedroom · 1 bed · 1 bath", "host_name" : "Henry", "host_is_superhost" : "t", "neighbourhood" : "Amsterdam, Noord-Holland, Netherlands", "price" : "$250.00" }
+{ "_id" : ObjectId("6611ab1dc34b7fbd6a5a75c4"), "name" : "Condo in Amsterdam · ★5.0 · 1 bedroom · 2 beds · 1.5 baths", "host_name" : "Eva", "host_is_superhost" : "t", "neighbourhood" : "Amsterdam, Noord-Holland, Netherlands", "price" : "$260.00" }
+{ "_id" : ObjectId("6611ab1dc34b7fbd6a5a85f4"), "name" : "Rental unit in Amsterdam · ★4.82 · 1 bedroom · 1 bed · 1 bath", "host_name" : "Henry", "host_is_superhost" : "t", "neighbourhood" : "Amsterdam, Noord-Holland, Netherlands", "price" : "$105.00" }
 ```
