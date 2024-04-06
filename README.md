@@ -38,7 +38,7 @@ The original data file was in csv.gz format, and it was unzipped by Cyberduck to
 | 52141403           | https://www.airbnb.com/rooms/52141403           | 2023-12-12   | city scrape     | Historic Suite in Amsterdam · ★4.65 · 1 bedroom    | $145  | 4.65                 |
 | 31944927           | https://www.airbnb.com/rooms/31944927           | 2023-12-12   | city scrape     | Urban Apartment in Amsterdam · ★4.85 · 2 bedrooms  | $200  | 4.85                 |
 | 54244720           | https://www.airbnb.com/rooms/54244720           | 2023-12-12   | city scrape     | Romantic BnB in Amsterdam · ★4.90 · 1 bedroom      | $160  | 4.90                 |
-| 888413701115128511 | https://www.airbnb.com/rooms/888413701115128511 | 2023-12-12   | previous scrape | Deluxe Con &#8203;`【oaicite:0】`&#8203;           |
+| 888413701115128511 | https://www.airbnb.com/rooms/888413701115128511 | 2023-12-12   | previous scrape | Deluxe Condo in Amsterdam · ★5.00 · 3 bedrooms     | $400  | 5.00                 |
 
 ## Describe any problems that were present in the data and the scrubbing tasks that were necessary to prepare your data set for import.
 
