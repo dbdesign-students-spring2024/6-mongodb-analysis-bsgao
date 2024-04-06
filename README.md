@@ -19,4 +19,8 @@ Describe any problems that were present in the data and the scrubbing tasks that
 
 returns the first two documents from the listings collection as they are stored in the database
 
-`db.listings.find().limit(2)`
+```
+
+db.listings.find().limit(2)
+
+```
